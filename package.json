@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/EthanEFung/UziMail#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "sequelize": "^4.27.0"
   },
   "devDependencies": {
     "jest": "^21.2.1",
