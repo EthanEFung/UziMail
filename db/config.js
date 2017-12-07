@@ -10,7 +10,7 @@ const db = new Sequelize(dbURL, {
 
 db
   .authenticate()
-  .then(() => console.log("successfully connected to db"))
+  .then(() => console.log("connected to db"))
   .catch(err => console.log("could not connect to db: ", err));
 
 module.exports = db;
