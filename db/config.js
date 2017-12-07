@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 const configureEnv = require("../lib/configureEnv");
-configureEnv("../");
+
+//configure the environment if session has not been made
+if (!process.env.DATABASE_URL) configureEnv("../");
 
 const db = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",

@@ -1,11 +1,11 @@
-const getContacts = () => {};
 const createContacts = () => {};
+const getContacts = () => {};
 const updateContact = () => {};
 const deleteContact = () => {};
 
 module.exports = {
-  getContacts,
   createContacts,
+  getContacts,
   updateContact,
   deleteContact
 };
