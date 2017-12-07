@@ -1,0 +1,29 @@
+{
+  "name": "UziMail",
+  "version": "1.0.0",
+  "description": "Coding Challenge",
+  "main": "",
+  "scripts": {
+    "test": "jest --watch",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EthanEFung/UziMail.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EthanEFung/UziMail/issues"
+  },
+  "homepage": "https://github.com/EthanEFung/UziMail#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "nodemon": "^1.12.5"
+  }
+}
