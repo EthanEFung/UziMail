@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const path = require("path");
-const { dbURL } = require("../env/config");
 const db = require("./config");
 const { User, Contact } = require("./models");
 
