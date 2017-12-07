@@ -21,6 +21,8 @@
   "homepage": "https://github.com/EthanEFung/UziMail#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
     "sequelize": "^4.27.0"
   },
   "devDependencies": {
