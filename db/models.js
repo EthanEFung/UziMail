@@ -2,13 +2,13 @@ const db = require("./config");
 const Sequelize = require("sequelize");
 
 const User = db.define("user", {
-  email: { type: Sequelize.TEXT, allowNull: false },
-  master_provider_API: { type: Sequelize.TEXT, allowNull: false },
-  slave_provider_API: { type: Sequelize.TEXT, allowNull: false }
+  username: { type: Sequelize.TEXT, allowNull: false },
+  email: { type: Sequelize.TEXT, allowNull: false }
 });
 
 const Contact = db.define("contact", {
-  email: { type: Sequelize.TEXT, allowNull: false }
+  email: { type: Sequelize.TEXT, allowNull: false },
+  group: { type: Sequelize.TEXT, allowNull: true }
 });
 
 User.hasMany(Contact);

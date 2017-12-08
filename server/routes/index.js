@@ -4,14 +4,14 @@ const statusOK = require("../../lib/statusOK");
 //promise based user controllers
 const {
   createUser,
-  getUser,
+  fetchUser,
   updateUser,
   deleteUser
 } = require("../controllers/userController");
 
 //promise based contact controllers
 const {
-  getContacts,
+  fetchContacts,
   createContacts,
   updateContact,
   deleteContact
@@ -21,18 +21,16 @@ router.get("/", statusOK);
 
 //operations for users
 router
-  .route("/users/:user-id")
-  .post(createUser)
-  .get(getUser)
-  .put(updateUser)
-  .delete(deleteUser);
+  .post("/user/create", createUser)
+  .get("/user/:userId/fetch", fetchUser)
+  .put("/user/:userId/update", updateUser)
+  .delete("/user/:userId/delete", deleteUser);
 
 //operations for contacts
 router
-  .route("/contacts/:user-id")
-  .post(createContacts)
-  .get(getContacts)
-  .put(updateContact)
-  .delete(deleteContact);
+  .post("/user/:userId/createContacts", createContacts)
+  .get("/user/:userId/fetchContacts", fetchContacts)
+  .put("/user/:userId/updateContact", updateContact)
+  .delete("/user/:userId/deleteContacts", deleteContact);
 
 module.exports = router;

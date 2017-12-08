@@ -12,23 +12,23 @@ db
     User.bulkCreate([
       {
         email: "test_1_email",
-        master_provider_API: "test_1_master_provider_API",
-        slave_provider_API: "test_1_slave_provider_API"
+        username: "test_1_username"
       },
       {
         email: "test_2_email",
-        master_provider_API: "test_2_master_provider_API",
-        slave_provider_API: "test_2_slave_provider_API"
+        username: "test_2_username"
       },
       {
         email: "test_3_email",
-        master_provider_API: "test_3_master_provider_API",
-        slave_provider_API: "test_3_slave_provider_API"
+        username: "test_3_username"
       },
       {
         email: "test_4_email",
-        master_provider_API: "test_4_master_provider_API",
-        slave_provider_API: "test_4_slave_provider_API"
+        username: "test_4_username"
+      },
+      {
+        email: "test_5_email",
+        username: "test_5_username"
       }
     ])
   )
