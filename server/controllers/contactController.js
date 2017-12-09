@@ -3,7 +3,7 @@ const { Contact } = require("../../db/models");
 const findOrDefaultNull = require("../../lib/findOrDefaultNull");
 
 /**
- * @param {*readable-stream} req must contain an array of contacts
+ * @param {readable-stream} req must contain an array of contacts
  *    contacts must have email
  *    optionally can have group
  *    contacts must have a userId
@@ -28,7 +28,7 @@ const createContacts = (req, res) => {
 };
 
 /**
- * @param {* writeable-stream} req must contain a userId in params
+ * @param {readable-stream} req must contain a userId in params
  * @param {writeable-stream} res stream to attach journal to
  */
 const fetchContacts = (req, res) => {

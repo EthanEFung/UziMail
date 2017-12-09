@@ -24,38 +24,6 @@ const createUser = (req, res) => {
       journal.entry(`could not create user: ${err}`);
       res.send(journal);
     });
-
-  // //journal steps in the chain sequentially
-  // const journal = new Journal();
-  // journal.header("createUser process documentation");
-
-  // createAccount("SparkPost", userInfo.email)
-  //   .then(sparkPostResponse => {
-  //     journal.entry("received response from sparkPost");
-  //     userInfo.master_provider_API = sparkPostResponse.key;
-  //     createAccount("SendGrid", userInfo.email);
-  //   })
-  //   .then(sendGridResponse => {
-  //     journal.entry("received response from sendGrid");
-  //     userInfo.slave_provider_API = sendGridResponse; // TODO
-  //     User.findOrCreate({
-  //       where: {
-  //         email: userInfo.email,
-  //         master_provider_API: userInfo.master_provider_API,
-  //         slave_provider_API: userInfo.slave_provider_API
-  //       }
-  //     });
-  //   })
-  //   .then(sequelizeResponse => {
-  //     journal.entry("received response from db");
-  //     journal.entry("User has been created!");
-  //     journal.entry(userInfo);
-  //     res.send(journal);
-  //   })
-  //   .catch(err => {
-  //     journal.entry(err);
-  //     res.send(journal);
-  //   });
 };
 
 /**
