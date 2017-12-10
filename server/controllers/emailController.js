@@ -8,15 +8,14 @@ const findOrDefaultNull = require("../../lib/findOrDefaultNull");
  *   text to send to recipients
  * @param {*} res
  *
- * skeleton:
- * parse if sending to a group or all contacts
- *
  */
 const sendEmail = (req, res) => {
   //journal process
   const journal = new Journal("send email");
+  let defaultFails = false;
   let getContacts;
 
+  //parse to either send to a group or all contacts
   if (req.body.group === "all" || !req.body.group) {
     journal.entry("sending email to all contacts");
     getContacts = sendAllEmail;
@@ -25,23 +24,34 @@ const sendEmail = (req, res) => {
     getContacts = sendGroupEmail;
   }
 
+  //send via master provider
   getContacts(req, res)
     .then(contacts => {
-      try {
-        journal.entry("received contacts", contacts, "sending to sparkpost");
-        return sendViaSparkPost(req.params.userId, contacts);
-      } catch (e) {
-        journal.entry("failed to send via sparkpost, sending via sendgrid");
-        return sendViaSendGrid(req.params.userId, contacts);
-      }
+      journal.entry("sending via sparkpost");
+      journal.attach(contacts);
+      return sendViaSparkPost(req.params.userId, contacts);
     })
     .then(data => {
       journal.entry("received data", data);
       res.send(journal);
     })
+    //catch errors to master provider and send via slave
     .catch(err => {
-      journal.entry("error sending via providers", err);
-      res.send(journal);
+      journal.entry(
+        "failed to send via sparkpost",
+        err,
+        "sending via sendgrid"
+      );
+      sendViaSendGrid(req.params.userId, journal.body)
+        .then(data => {
+          journal.entry("received data", data);
+          journal.attach(data);
+          res.send(journal);
+        })
+        .catch(err => {
+          journal.entry("error sending via providers", err);
+          res.send(journal);
+        });
     });
 };
 
@@ -71,11 +81,27 @@ const sendGroupEmail = (req, res) => {
   });
 };
 
-const sendViaSparkPost = (userId, contacts) => {
-  return new Promise((resolve, reject) => resolve("hello, world"));
-};
+function sendViaSparkPost(userId, contacts) {
+  const SparkPost = require("sparkpost");
+  const client = new SparkPost();
 
-const sendViaSendGrid = (userId, contacts) => {
-  return new Promise((resolve, reject) => resolve("hi"));
-};
+  return new Promise((resolve, reject) => {
+    client.transmissions
+      .send({
+        content: {
+          from: "testingSparkPost@test.com",
+          subject: "hello, world!",
+          html: "<html><body><p>test</p></body></html>"
+          //add html attribute if fails
+        },
+        recipients: [{ address: "ethanefung@gmail.com" }]
+      })
+      .then(data => resolve(data))
+      .catch(err => reject(err));
+  });
+}
+
+function sendViaSendGrid(userId, contacts) {
+  return new Promise(resolve => resolve("hi"));
+}
 module.exports = { sendEmail };
