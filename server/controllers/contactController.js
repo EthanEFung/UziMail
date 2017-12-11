@@ -2,10 +2,11 @@ const Journal = require("../../lib/Journal");
 const { Contact } = require("../../db/models");
 
 /**
- * @param {readable-stream} req must contain an array of contacts
- *    contacts must have email
- *    optionally can have group
- *    contacts must have a userId
+ * @param {readable-stream} req must contain the following:
+ *   @param {[]} req.body.contacts collection of objects with the following
+ *     @param {string} req.body.contacts[i].email
+ *     @param {number} req.body.contacts[i].userId
+ *     @param {string} req.body.contacts[i].group
  * @param {writeable-stream} res stream to attach journal to
  */
 const createContacts = (req, res) => {
@@ -27,7 +28,8 @@ const createContacts = (req, res) => {
 };
 
 /**
- * @param {readable-stream} req must contain a userId in params
+ * @param {readable-stream} req must contain the following:
+ *   @param req.params.userId {number}
  * @param {writeable-stream} res stream to attach journal to
  */
 const fetchContacts = (req, res) => {
@@ -49,7 +51,10 @@ const fetchContacts = (req, res) => {
 };
 
 /**
- * @param {readable-stream} req must have a contactId, email and group in body
+ * @param {readable-stream} req must contain the following:
+ *   @param {number} req.body.contactId
+ *   @param {string} req.body.email
+ *   @param {string} req.body.group optional
  * @param {writeable-stream} res stream to attach journal to
  */
 const updateContact = (req, res) => {
@@ -77,7 +82,8 @@ const updateContact = (req, res) => {
 };
 
 /**
- * @param {readable-stream} req must contain a contactId in body
+ * @param {readable-stream} req must contain the following:
+ *   @param {number} req.body.contactId
  * @param {writeable-stream} res stream to attach journal to
  */
 const deleteContact = (req, res) => {

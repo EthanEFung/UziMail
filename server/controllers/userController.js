@@ -4,12 +4,14 @@ const createAccount = require("../../lib/createAccount");
 const Journal = require("../../lib/Journal");
 
 /**
- * @param {readable-stream} req must contain body with email, and username attributes
+ * @param {readable-stream} req contains the following attributes
+ *   @param {string} req.body.email
+ *   @param {string} req.body.username
  * @param {writable-stream} res stream to send back to the client
  */
 const createUser = (req, res) => {
   //journal process
-  const journal = new Journal("createUser process");
+  const journal = new Journal("create user");
   journal.entry(`storing user for ${req.body.username}`);
 
   User.findOrCreate({
@@ -27,8 +29,8 @@ const createUser = (req, res) => {
 };
 
 /**
- *
- * @param {readable-stream} req must contain parameters with userId
+ * @param {readable-stream} req must contain the following:
+ *   @param {number} req.params.userId
  * @param {writable-stream} res stream to send to client
  */
 const fetchUser = (req, res) => {
@@ -51,13 +53,15 @@ const fetchUser = (req, res) => {
 };
 
 /**
- * @param {readable-stream} req must contain userId parameter and body with:
- *    email AND username
+ * @param {readable-stream} req must contain the following:
+ *   @param {number} req.params.userId
+ *   @param {string} req.body.email
+ *   @param {string} req.body.username
  * @param {writable-stream} res stream to send back to the client
  */
 const updateUser = (req, res) => {
   //journal process
-  const journal = new Journal("Update User");
+  const journal = new Journal("update user");
   journal.entry("searching for user in db");
 
   User.update(
@@ -78,7 +82,8 @@ const updateUser = (req, res) => {
 };
 
 /**
- * @param {readable-stream} req must contain id in params of selected user
+ * @param {readable-stream} req must contain the following:
+ *   @param {number} req.params.userId
  * @param {writable-stream} res stream to send back to the client
  */
 const deleteUser = (req, res) => {

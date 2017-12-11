@@ -8,18 +8,17 @@ const sendViaSparkPost = require("./helpers/sendViaSparkPost");
 const sendViaSendGrid = require("./helpers/sendViaSendGrid");
 
 /**
- * Provide the following in the form of json
- * @param {readable-stream} req must contain the following attributes
+ * @param {readable-stream} req must contain the following:
  *   @param {number} req.params.userId the user who is requesting to send an email
- *   @param {string} req.body.group grouping required** specify "all" in group if necessary
- *   @param {{}} req.body.payload payload to send to recipients
+ *   @param {string} req.body.group optional - defaults to email all contacts of a user
+ *   @param {{}} req.body.payload message payload to send to recipients
  * @param {writable-stream} res stream to send data back to the client
  */
 const createEmail = (req, res) => {
   //journal process
   const journal = new Journal("send email");
+  //define contacts
   const fetchContacts = defineContactsToFetch(req, journal);
-  const userInfo = journal.body;
 
   fetchUserInfo(req)
     .then(data => {
@@ -28,8 +27,8 @@ const createEmail = (req, res) => {
       return fetchContacts(req);
     })
     .then(contacts => {
-      journal.entry("sending via master provider");
-      //Add the contacts to the body
+      journal.entry("sending email payload via master provider");
+      //Add the contacts to the journal body
       journal.body.contacts = contacts;
       return sendViaSparkPost(journal.body, req.body.payload);
     })

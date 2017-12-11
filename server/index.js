@@ -11,7 +11,6 @@ const router = require("./routes/index");
 app
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
-  .use(express.static(path.join(__dirname, "../", "client")))
   .use(router);
 
 app.listen(port, err => {

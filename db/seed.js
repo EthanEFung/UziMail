@@ -3,7 +3,9 @@ const path = require("path");
 const db = require("./config");
 const { User, Contact } = require("./models");
 
+//log process
 console.log("seed initiated, authenticating");
+
 db
   .authenticate()
   .then(console.log("authenticated, syncing user models"))
