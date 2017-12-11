@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const statusOK = require("../../lib/statusOK");
 
 //promise based user controllers
 const {
@@ -11,15 +10,17 @@ const {
 
 //promise based contact controllers
 const {
-  fetchContacts,
   createContacts,
+  fetchContacts,
   updateContact,
   deleteContact
 } = require("../controllers/contactController");
 
-const { sendEmail } = require("../controllers/emailController");
+const {
+  createEmail
+} = require("../controllers/emailController/emailController");
 
-router.get("/", statusOK);
+router.get("/", (req, res) => res.sendStatus(200));
 
 //operations for users
 router
@@ -36,6 +37,6 @@ router
   .delete("/user/:userId/deleteContacts", deleteContact);
 
 //operations for emailing
-router.post("/user/:userId/sendEmail", sendEmail);
+router.post("/user/:userId/createEmail", createEmail);
 
 module.exports = router;

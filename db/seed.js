@@ -11,11 +11,11 @@ db
   .then(() =>
     User.bulkCreate([
       {
-        email: "test_1_email",
-        username: "test_1_username"
+        email: "ethanefung@gmail.com",
+        username: "Ethan Fung"
       },
       {
-        email: "test_2_email",
+        email: "coffeeequalsgood@gmail.com",
         username: "test_2_username"
       },
       {
@@ -37,19 +37,19 @@ db
   .then(() =>
     Contact.bulkCreate([
       {
-        email: "test_1_contact_email",
+        email: "coffeeequalsgood@gmail.com",
         userId: 1
       },
       {
-        email: "test_2_contact_email",
+        email: "ethanefung@gmail.com",
         userId: 1
       },
       {
-        email: "test_3_contact_email",
+        email: "ethan.e.fung@biola.edu",
         userId: 1
       },
       {
-        email: "test_4_contact_email",
+        email: "ethanefung@gmail.com",
         userId: 2
       },
       {

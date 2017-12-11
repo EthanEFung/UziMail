@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/EthanEFung/UziMail#readme",
   "dependencies": {
+    "@sendgrid/client": "^6.1.4",
+    "@sendgrid/mail": "^6.1.4",
     "express": "^4.16.2",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",

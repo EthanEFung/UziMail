@@ -1,6 +1,5 @@
 const Journal = require("../../lib/Journal");
 const { Contact } = require("../../db/models");
-const findOrDefaultNull = require("../../lib/findOrDefaultNull");
 
 /**
  * @param {readable-stream} req must contain an array of contacts
