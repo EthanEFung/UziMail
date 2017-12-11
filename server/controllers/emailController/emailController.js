@@ -1,16 +1,19 @@
+// promise helper
 const Journal = require("../../../lib/Journal");
-const { Contact, User } = require("../../../db/models");
+
+// email controller helper functions
 const defineContactsToFetch = require("./helpers/defineContactsToFetch");
 const fetchUserInfo = require("./helpers/fetchUserInfo");
 const sendViaSparkPost = require("./helpers/sendViaSparkPost");
 const sendViaSendGrid = require("./helpers/sendViaSendGrid");
 
 /**
- * @param {userId, group, payload} req must contain userId in parameters,
- *   @param {number} userId the user who is requesting to send an email
- *   @param {string} group grouping required** specify "all" in group if necessary
- *   @param {{}} payload payload to send to recipients
- * @param {*} res
+ * Provide the following in the form of json
+ * @param {readable-stream} req must contain the following attributes
+ *   @param {number} req.params.userId the user who is requesting to send an email
+ *   @param {string} req.body.group grouping required** specify "all" in group if necessary
+ *   @param {{}} req.body.payload payload to send to recipients
+ * @param {writable-stream} res stream to send data back to the client
  */
 const createEmail = (req, res) => {
   //journal process
@@ -26,6 +29,7 @@ const createEmail = (req, res) => {
     })
     .then(contacts => {
       journal.entry("sending via master provider");
+      //Add the contacts to the body
       journal.body.contacts = contacts;
       return sendViaSparkPost(journal.body, req.body.payload);
     })
@@ -43,12 +47,12 @@ const createEmail = (req, res) => {
       sendViaSendGrid(journal.body, req.body.payload)
         .then(([response, body]) => {
           journal.entry(`status code: ${response.statusCode}`);
-          journal.attach(response.statusCode);
+          journal.body.statusCode = response.statusCode;
           res.send(journal);
         })
         .catch(err => {
-          //if slave provider also fails, ideally, set up another provider to handle
-          //for now send error to client
+          //if slave provider also fails, ideally, set up another provider
+          //to handle 2nd error. For now send error to client
           journal.entry("error sending via providers", err);
           res.send(journal);
         });

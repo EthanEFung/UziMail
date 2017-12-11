@@ -1,19 +1,17 @@
+const SparkPost = require("sparkpost");
+const client = new SparkPost(process.env.SPARKPOST_API_KEY);
+
 /**
  *
  * @param {*} userInfo user's identification
- *   @param contacts
- *   @param email
- *   @param username
- * @param {*} contacts list of contacts to send
+ *   @param contacts {[]} a collection of objects tha contain receipient data
+ *   @param email {string} user's email
+ *   @param username {string} user's handle
  * @param {*} payload payload with data on the message being sent
  *   @param html message to send
  *   @param subject subject head of message
  */
 function sendViaSparkPost(userInfo, payload) {
-  const SparkPost = require("sparkpost");
-  const client = new SparkPost(process.env.SPARKPOST_API_KEY);
-
-  const recipients = formatSparkPostRecipientData(userInfo.contacts);
   return new Promise((resolve, reject) => {
     client.transmissions
       .send({
@@ -29,7 +27,7 @@ function sendViaSparkPost(userInfo, payload) {
           subject: payload.subject,
           html: payload.html
         },
-        recipients: recipients
+        recipients: formatSparkPostRecipientData(userInfo.contacts)
       })
       .then(data => resolve(data))
       .catch(err => reject(err));

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-//promise based user controllers
+//promise based user controller
 const {
   createUser,
   fetchUser,
@@ -8,7 +8,7 @@ const {
   deleteUser
 } = require("../controllers/userController");
 
-//promise based contact controllers
+//promise based contact controller
 const {
   createContacts,
   fetchContacts,
@@ -16,6 +16,7 @@ const {
   deleteContact
 } = require("../controllers/contactController");
 
+//promise base email controller
 const {
   createEmail
 } = require("../controllers/emailController/emailController");

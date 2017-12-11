@@ -1,17 +1,17 @@
+const client = require("@sendgrid/client");
+client.setApiKey(process.env.SENDGRID_API_KEY);
+
 /**
  *
- * @param userInfo
- *   @param contacts {[]}
+ * @param userInfo {{ contacts, email }} object containing information on the current user
+ *   @param contacts {[]} list of contacts associated with the group that has been specified by the user
  *   @param email {string} user email
- * @param {{}} payload map containing message contents
+ * @param {{ html, subject }} payload map containing message contents
  *   @param html message to send
  *   @param subject subject head of message
  */
 function sendViaSendGrid(userInfo, payload) {
   return new Promise((resolve, reject) => {
-    const client = require("@sendgrid/client");
-    client.setApiKey(process.env.SENDGRID_API_KEY);
-
     const data = {
       content: [
         {
@@ -36,10 +36,11 @@ function sendViaSendGrid(userInfo, payload) {
       subject: payload.subject
     };
 
-    const sgRequest = {};
-    sgRequest.body = data;
-    sgRequest.method = "POST";
-    sgRequest.url = "/v3/mail/send";
+    const sgRequest = {
+      body: data,
+      method: "POST",
+      url: "/v3/mail/send"
+    };
 
     client
       .request(sgRequest)
@@ -47,7 +48,6 @@ function sendViaSendGrid(userInfo, payload) {
         resolve([response, body]);
       })
       .catch(err => {
-        console.log(err.response.body);
         reject(`error sending ${JSON.stringify(err.response.body)}`);
       });
   });

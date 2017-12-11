@@ -45,10 +45,6 @@ db
         userId: 1
       },
       {
-        email: "ethan.e.fung@biola.edu",
-        userId: 1
-      },
-      {
         email: "ethanefung@gmail.com",
         userId: 2
       },

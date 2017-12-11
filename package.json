@@ -32,7 +32,6 @@
   "devDependencies": {
     "dotenv": "^4.0.0",
     "jest": "^21.2.1",
-    "jsdoc": "^3.5.5",
     "nodemon": "^1.12.5"
   }
 }
