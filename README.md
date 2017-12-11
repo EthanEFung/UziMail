@@ -48,8 +48,7 @@ you must have:
   required in order to send CRUD operations with json payloads. Once an UI, and
   or extended API is built, this will be deprecated.
 
-Be sure to create a .env file to store all your api keys. See [this example]()
-to store
+Be sure to create a .env file to store all your api keys.
 
 # TODOs
 
