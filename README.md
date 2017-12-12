@@ -30,7 +30,7 @@ you must have:
 * A SendGrid account,
   [sign up for free](https://sendgrid.com/free?source=sendgrid-nodejs) to send
   up to 40,000 emails for the first 30 days or check out
-  [our pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
+  [SendGrid's pricing](https://sendgrid.com/pricing?source=sendgrid-nodejs).
 * A remote Postgres Database as a Service provider. I used elephantSQL.
   [signup for an account](https://customer.elephantsql.com/login)
 * TEMPORARY DEPENDENCY - Postman Native Application.
