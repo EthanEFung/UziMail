@@ -23,5 +23,8 @@ beneath you'll find response object with the following data.
 If the user with the same username and email is specified in the request's body,
 the user is found, and not created.
 
-What you will notice is that the response object specifies an Id. This is your
-userId. Remember this number as it is vital for all other services provided.
+What you will notice is that the response object specifies an `Id`. This is your
+`userId`. Remember this number as it is vital for all other services provided.
+
+[Click Here](/server/SERVICE_ENDPOINTS.md) to view all the functionality of this
+service.
