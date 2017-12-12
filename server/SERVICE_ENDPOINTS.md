@@ -27,17 +27,23 @@ router
 
 ## Contact Endpoints
 
+Contacts and contact groups can be stored in our database. This way emails can
+be sent to multiple parties without having to specify time and time again which
+people receive the emails.
+
 * Create contacts: send a post request to
   `localhost:3000/user/:userId/createContacts` with body with a `contacts`
   attribute. `contacts` must be an array. Here is an example of a valid request
   body: ![create contacts](/assets/create_contacts_1.png)
 
-- Fetch user: send a get request and specify your own `userId` at
+* Fetch contacts: send a get request and specify your own `userId` at
   `localhost:3000/user/:userId/fetchContacts`
-- Update User: update a users contacts by making a put request specifying your
-  own `userId` in the parameters, the `contactId`, `email` and `group` in the
-  body of the request at `localhost:3000/user/:userId/updateContact`
-- Delete User: send a delete request and specify your own `userId` in the
+
+* Update contact: update a contact by making a put request specifying your own
+  `userId` in the parameters, the `contactId`, `email` and `group` in the body
+  of the request at `localhost:3000/user/:userId/updateContact`
+
+* Delete contact: send a delete request and specify your own `userId` in the
   parameters and `contactId` in the request body.
   `localhost:3000/user/:userId/deleteContacts`
 
