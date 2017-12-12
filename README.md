@@ -5,7 +5,7 @@ sends emails via SparkPost, and defaults to the SendGrid email provider.
 SparkPost errors are abstracted away from clients, and emailing service is still
 provided.
 
-# Prompt
+## Prompt
 
 "What I can say is that the project requires very little if any client-side
 code. It is much more about functionality and ensuring that no errors pop up
@@ -15,16 +15,6 @@ Email Service: Create a service that accepts the necessary information and sends
 emails. It should provide an abstraction between two different email service
 providers. If one of the services goes down, your service can quickly failover
 to a different provider without affecting your customers.
-
-Example Email Providers:
-
-* SendGrid
-* Mailgun
-* SparkPost
-* Amazon SES
-
-All listed services are free to try and are pretty painless to sign up for, so
-please register your own test accounts on each.
 
 ## Prerequisites
 
@@ -70,3 +60,9 @@ defaults localhost:3000/
 
 [Read this](/server/SERVICE_ENDPOINTS.md) to learn the functionality of this
 service
+
+## Retrospective
+
+This repository was created in response to a coding challenge.
+[Read this](RETROSPECTIVE.md) to read about future implementations, and
+challenges faced.
