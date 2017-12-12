@@ -58,21 +58,15 @@ From the command line
 //install dependencies
 npm install
 
-//start rest server
+//start REST server
 npm start
 ```
 
-Now, the service runs on your local machine. After runnint the rest server, the
+Now, the service runs on your local machine. After running the rest server, the
 command line will notify on which port the service is running on. Service
 defaults localhost:3000/
 
-# TODOs
+## Service endpoints
 
-* develop testing - In the process of learning asynchronous unit testing using
-  jest. Could not complete in given deadline December 11, 2017.
-* develop authentication to confirm users and seemlessly provide api with user
-  information - MUST HAVE, without authentication, the use of this service does
-  not have viability as an actual service.
-* develop a client UI - A nice to have
-
-# Retrospective
+[Read this](/server/SERVICE_ENDPOINTS.md) to learn the functionality of this
+service
