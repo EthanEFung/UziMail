@@ -68,5 +68,5 @@ defaults localhost:3000/
 
 ## Service endpoints
 
-[Read this](/server/SERVICE_ENDPOINTS.md) to learn the functionality of this
+[Read this](/server/service_endpoints.md) to learn the functionality of this
 service

@@ -1,32 +1,17 @@
 # Service Endpoints
 
-Using Postman, send CRUD operations to the following endpoints
+Using Postman, send CRUD operations to the following endpoints with this API, be
+sure to [create a user](/server/user_creation.md) prior to using the service. In
+the user_creation.md specifies all the requirements needed to properly send data
+to the rest server.
 
-## User Operations
+## User Endpoints
 
-With this API, be sure to create a user prior to using the service.
-
-To do this using postman, specify a POST request to `localhost:3000/user/create`
-![postman user creation 1](/assets/postman_user_creation_1.png)
-
-No, authorization is needed, however be sure to specify a content type of
-`application/json` in the Headers
-![postman user creation 2](/assets/postman_user_creation_2.png)
-
-Once the content type is specified select the `Body` Tab, select `raw`, and
-change dropdown that says `Text` to be `JSON(application/json)`
-
-![postman user creation 3](/assets/postman_user_creation_3.png)
-
-Finally specify a JSON object with the required attributes `username` and
-`email`
-
-![postman user creation 4](/assets/postman_user_creation_4.png)
-
-Perfect! Now all that needs to be done is to click the blue `Send` button, and
-beneath you'll find response object with the following data.
-
-![postman user creation 5](/assets/postman_user_creation_5.png)
-
-What you will notice is that the response object specifies an Id. This is your
-userId. Remember this number as it is vital for all other services provided.
+* Create a user: send a post request to `localhost:3000/user/create`
+* Fetch user: send a get request and specify your own userId at
+  `localhost:3000/user/:userId/fetch`
+* Update User: update a users email or username by making a put request
+  specifying both username and email in the body of the request and specifying
+  your own userId at `localhost:3000/user/:userId/update`
+* Delete User: send a delete request and specify your own userId at
+  `localhost:3000/user/:userId/delete`

@@ -17,7 +17,7 @@ const createUser = (req, res) => {
   User.findOrCreate({
     where: { username: req.body.username, email: req.body.email }
   })
-    .spread((user, created) => {
+    .spread(([user, created]) => {
       journal.attach(user);
       journal.entry(`user was created? ${created}`);
       res.send(journal);
