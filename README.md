@@ -46,7 +46,7 @@ you must have:
 * TEMPORARY DEPENDENCY - Postman Native Application.
   [get postman](https://www.getpostman.com/). As a beta, this dependency is
   required in order to send CRUD operations with json payloads. Once an UI, and
-  or extended API is built, this will be deprecated.
+  or extended API is built, this will no longer be needed.
 
 Be sure to create a .env file to store all your api keys.
 
