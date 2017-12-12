@@ -39,6 +39,7 @@ you must have:
   or extended API is built, this will no longer be needed.
 
 Be sure to create a .env file to store all your api keys.
+[Sample Env](.env_sample)
 
 ## How to run this service
 
