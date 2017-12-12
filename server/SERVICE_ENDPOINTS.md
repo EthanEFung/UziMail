@@ -27,10 +27,10 @@ router
 
 ## Contact Endpoints
 
-* Create contacts: send a post requestto
+* Create contacts: send a post request to
   `localhost:3000/user/:userId/createContacts` with body with a `contacts`
-  attribute. contacts must be an array of contacts. Here is an example of a
-  valid request body: ![create contacts](/assets/create_contacts_1.png)
+  attribute. `contacts` must be an array. Here is an example of a valid request
+  body: ![create contacts](/assets/create_contacts_1.png)
 
 - Fetch user: send a get request and specify your own `userId` at
   `localhost:3000/user/:userId/fetchContacts`
@@ -49,3 +49,19 @@ router
   .put("/user/:userId/updateContact", updateContact)
   .delete("/user/:userId/deleteContacts", deleteContact);
 ```
+
+## Send Email Endpoint
+
+Once a user and a number of contacts are established, the emailing service can
+be rendered. Specify a `userId` in the parameters, and send the following JSON
+object at `localhost:3000/user/:userId/createEmail`
+
+![send email](/assets/create_email_example.png)
+
+```js
+//operations for emailing
+router.post("/user/:userId/createEmail", createEmail);
+```
+
+Once the post request is made, the service will send an email to the specified
+group. If no group is specified, the service emails all contacts of the user.
