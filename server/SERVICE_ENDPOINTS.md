@@ -65,3 +65,6 @@ router.post("/user/:userId/createEmail", createEmail);
 
 Once the post request is made, the service will send an email to the specified
 group. If no group is specified, the service emails all contacts of the user.
+
+[Click Here](/create_email_request.md) To see the system design for the email
+service
