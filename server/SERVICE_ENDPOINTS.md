@@ -11,7 +11,41 @@ to the rest server.
 * Fetch user: send a get request and specify your own userId at
   `localhost:3000/user/:userId/fetch`
 * Update User: update a users email or username by making a put request
-  specifying both username and email in the body of the request and specifying
-  your own userId at `localhost:3000/user/:userId/update`
+  specifying both `username` and `email` in the body of the request and
+  specifying your own userId at `localhost:3000/user/:userId/update`
 * Delete User: send a delete request and specify your own userId at
   `localhost:3000/user/:userId/delete`
+
+```js
+//operations for users
+router
+  .post("/user/create", createUser)
+  .get("/user/:userId/fetch", fetchUser)
+  .put("/user/:userId/update", updateUser)
+  .delete("/user/:userId/delete", deleteUser);
+```
+
+## Contact Endpoints
+
+* Create contacts: send a post requestto
+  `localhost:3000/user/:userId/createContacts` with body with a `contacts`
+  attribute. contacts must be an array of contacts. Here is an example of a
+  valid request body: ![create contacts](/assets/create_contacts_1.png)
+
+- Fetch user: send a get request and specify your own `userId` at
+  `localhost:3000/user/:userId/fetchContacts`
+- Update User: update a users contacts by making a put request specifying your
+  own `userId` in the parameters, the `contactId`, `email` and `group` in the
+  body of the request at `localhost:3000/user/:userId/updateContact`
+- Delete User: send a delete request and specify your own `userId` in the
+  parameters and `contactId` in the request body.
+  `localhost:3000/user/:userId/deleteContacts`
+
+```js
+//operations for contacts
+router
+  .post("/user/:userId/createContacts", createContacts)
+  .get("/user/:userId/fetchContacts", fetchContacts)
+  .put("/user/:userId/updateContact", updateContact)
+  .delete("/user/:userId/deleteContacts", deleteContact);
+```
