@@ -45,7 +45,7 @@ people receive the emails.
 
 * Delete contact: send a delete request and specify your own `userId` in the
   parameters and `contactId` in the request body.
-  `localhost:3000/user/:userId/deleteContacts`
+  `localhost:3000/user/:userId/deleteContact`
 
 ```js
 //operations for contacts
