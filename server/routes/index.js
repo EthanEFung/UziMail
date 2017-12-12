@@ -35,7 +35,7 @@ router
   .post("/user/:userId/createContacts", createContacts)
   .get("/user/:userId/fetchContacts", fetchContacts)
   .put("/user/:userId/updateContact", updateContact)
-  .delete("/user/:userId/deleteContacts", deleteContact);
+  .delete("/user/:userId/deleteContact", deleteContact);
 
 //operations for emailing
 router.post("/user/:userId/createEmail", createEmail);

@@ -88,7 +88,7 @@ const updateContact = (req, res) => {
  */
 const deleteContact = (req, res) => {
   //journal process
-  const journal = new Journal("delete contacts");
+  const journal = new Journal("delete contact");
   journal.entry("deleting contact");
 
   Contact.destroy({ where: { id: req.body.contactId } })

@@ -53,7 +53,7 @@ router
   .post("/user/:userId/createContacts", createContacts)
   .get("/user/:userId/fetchContacts", fetchContacts)
   .put("/user/:userId/updateContact", updateContact)
-  .delete("/user/:userId/deleteContacts", deleteContact);
+  .delete("/user/:userId/deleteContact", deleteContact);
 ```
 
 ## Send Email Endpoint
