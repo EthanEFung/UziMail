@@ -50,6 +50,22 @@ you must have:
 
 Be sure to create a .env file to store all your api keys.
 
+## How to run this service
+
+From the command line
+
+```cli
+//install dependencies
+npm install
+
+//start rest server
+npm start
+```
+
+Now, the service runs on your local machine. After runnint the rest server, the
+command line will notify on which port the service is running on. Service
+defaults localhost:3000/
+
 # TODOs
 
 * develop testing - In the process of learning asynchronous unit testing using
