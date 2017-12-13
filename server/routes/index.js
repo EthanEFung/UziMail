@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+const { Contact, User } = require("../../db/models"); //injecting dependencies for unit tests
 //promise based user controller
 const {
   createUser,
@@ -32,10 +32,18 @@ router
 
 //operations for contacts
 router
-  .post("/user/:userId/createContacts", createContacts)
-  .get("/user/:userId/fetchContacts", fetchContacts)
-  .put("/user/:userId/updateContact", updateContact)
-  .delete("/user/:userId/deleteContact", deleteContact);
+  .post("/user/:userId/createContacts", (req, res) =>
+    createContacts(req, res, Contact)
+  )
+  .get("/user/:userId/fetchContacts", (req, res) => {
+    fetchContacts(req, res, Contact);
+  })
+  .put("/user/:userId/updateContact", (req, res) => {
+    updateContact(req, res, Contact);
+  })
+  .delete("/user/:userId/deleteContact", (req, res) => {
+    deleteContact(req, res, Contact);
+  });
 
 //operations for emailing
 router.post("/user/:userId/createEmail", createEmail);

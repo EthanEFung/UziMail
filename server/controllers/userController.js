@@ -1,5 +1,4 @@
 const { User } = require("../../db/models");
-const validateInput = require("../../lib/validateInput");
 const createAccount = require("../../lib/createAccount");
 const Journal = require("../../lib/Journal");
 

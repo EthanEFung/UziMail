@@ -9,7 +9,7 @@ const { Contact } = require("../../db/models");
  *     @param {string} req.body.contacts[i].group
  * @param {writeable-stream} res stream to attach journal to
  */
-const createContacts = (req, res) => {
+const createContacts = (req, res, Contact) => {
   //journal process
   const journal = new Journal("Create Contacts");
   journal.entry("creating entry in the db");
@@ -32,7 +32,7 @@ const createContacts = (req, res) => {
  *   @param req.params.userId {number}
  * @param {writeable-stream} res stream to attach journal to
  */
-const fetchContacts = (req, res) => {
+const fetchContacts = (req, res, Contact) => {
   //journal process
   const journal = new Journal("fetch contacts");
   journal.entry("fetching contacts");
@@ -57,7 +57,7 @@ const fetchContacts = (req, res) => {
  *   @param {string} req.body.group optional
  * @param {writeable-stream} res stream to attach journal to
  */
-const updateContact = (req, res) => {
+const updateContact = (req, res, models) => {
   //journal process
   const journal = new Journal("update contacts");
   journal.entry(`updating contact ${req.body.contactId}`);
@@ -86,7 +86,7 @@ const updateContact = (req, res) => {
  *   @param {number} req.body.contactId
  * @param {writeable-stream} res stream to attach journal to
  */
-const deleteContact = (req, res) => {
+const deleteContact = (req, res, models) => {
   //journal process
   const journal = new Journal("delete contact");
   journal.entry("deleting contact");
