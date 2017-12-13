@@ -57,13 +57,10 @@ const fetchContacts = (req, res, Contact) => {
  *   @param {string} req.body.group optional
  * @param {writeable-stream} res stream to attach journal to
  */
-const updateContact = (req, res, models) => {
+const updateContact = (req, res, Contact) => {
   //journal process
   const journal = new Journal("update contacts");
   journal.entry(`updating contact ${req.body.contactId}`);
-
-  let updateEmail = false;
-  let updateGroup = false;
 
   Contact.update(
     { email: req.body.email, group: req.body.group },
@@ -86,7 +83,7 @@ const updateContact = (req, res, models) => {
  *   @param {number} req.body.contactId
  * @param {writeable-stream} res stream to attach journal to
  */
-const deleteContact = (req, res, models) => {
+const deleteContact = (req, res, Contact) => {
   //journal process
   const journal = new Journal("delete contact");
   journal.entry("deleting contact");
